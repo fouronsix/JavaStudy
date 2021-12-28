@@ -1,0 +1,40 @@
+/*
+Заполнить строковый массив 6 строками
+Повторяющимся строкам присвоить значение null
+*/
+
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+	    final int SIZE = 6; 
+		String[] str1 = new String[SIZE]; 
+		Scanner sc1 = new Scanner(System.in); 
+        
+		//fill the array
+		for (int i = 0; i < SIZE; i++) {
+		    str1[i] = sc1.nextLine();
+		}
+        //create auxilary array
+		String[] strAux = new String[SIZE]; 
+		str2[0] = str1[0]; 
+        
+		//search for duplicates
+		for (int i = 0; i<SIZE-1; i++) {
+			for (int j = i+1; i<SIZE; j++) {
+			if (str1[j].equals(str1[i])){
+		        continue;
+		    }
+		    else {
+		        strAux[j] = str1[j];
+		    }
+		    }
+        }
+		str1 = strAux;
+		
+		for (int i = 0; i<SIZE; i++) {
+		    System.out.print(str1[i] + ", ");
+			//input a, a, a, s, s, a
+			//result: a, null, null, s, s, a,
+		}
+	}
+}
