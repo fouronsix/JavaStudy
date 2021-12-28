@@ -16,7 +16,7 @@ public class Main {
 		}
         //create auxilary array
 		String[] strAux = new String[SIZE]; 
-		str2[0] = str1[0]; 
+		strAux[0] = str1[0]; 
         
 		//search for duplicates
 		for (int i = 0; i<SIZE-1; i++) {
