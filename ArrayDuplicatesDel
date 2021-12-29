@@ -1,5 +1,7 @@
 /*
 Заполнить строковый массив 6 строками
+/*
+Заполнить строковый массив 6 строками
 Повторяющимся строкам присвоить значение null
 */
 
@@ -14,13 +16,20 @@ public class Main
 		for (int i = 0; i < SIZE; i++) {
 		    str1[i] = sc1.nextLine();
 		}
+		
+		for (int i = 0; i<SIZE; i++) {
+		    System.out.print(str1[i] + ", ");
+		}
+		System.out.print("\n");
+		
+		System.out.print("Первые две строки равны? " + str1[0].equals(str1[1]) + "\n");
+		
 		for(int i=0; i<SIZE; i++){
-		    for(int j=1; j<SIZE; j++){
-		        if (str1[j] == str1[i]){
-		            str1[i]=null;
-		        }
-		        if ((str1[j]==null) || (str1[j] != str1[i])){
-		            continue;
+		    for(int j=i+1; j<SIZE; j++){
+		       if ( !( str1[i]==null || str1[j]==null ) && str1[i].equals(str1[j]) ) {
+		            System.out.print("Результат сравнения i=" + i + ", j=" + j + " : " + (str1[j] == str1[i]) + "\n");
+		            System.out.print("строка " + j + " (" + str1[j] + ") обнуляется\n");
+		            str1[j]=null;
 		        }
 		    }
 		}
@@ -33,4 +42,3 @@ public class Main
 }
 			//input ab, ab, ab, fg, fg, ab
 			//result: ab, null, null, null, null, null,
-
