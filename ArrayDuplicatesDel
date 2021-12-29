@@ -1,40 +1,56 @@
 /*
-Заполнить строковый массив 6 строками
-Повторяющимся строкам присвоить значение null
-*/
+В этой задаче тебе нужно:
 
+Считать 6 строк и заполнить ими массив strings.
+Удалить повторяющиеся строки из массива strings, заменив их на null
+(null должны быть не строками "null").
+Примеры.
+
+Массив после чтения строк:
+{"Hello", "Hello", "World", "Java", "Tasks", "World"}
+Массив после удаления повторяющихся строк:
+{null, null, null, "Java", "Tasks", null}
+
+*/
 import java.util.Scanner;
-public class Main {
+
+public class ArraysJR_delStrings_v2 {
+    public static String[] strings; 			//array called "strings" declared
+
     public static void main(String[] args) {
-	    final int SIZE = 6; 
-		String[] str1 = new String[SIZE]; 
-		Scanner sc1 = new Scanner(System.in); 
         
-		//fill the array
-		for (int i = 0; i < SIZE; i++) {
-		    str1[i] = sc1.nextLine();
-		}
-        //create auxilary array
-		String[] strAux = new String[SIZE]; 
-		strAux[0] = str1[0]; 
-        
-		//search for duplicates
-		for (int i = 0; i<SIZE-1; i++) {
-			for (int j = i+1; i<SIZE; j++) {
-			if (str1[j].equals(str1[i])){
-		        continue;
-		    }
-		    else {
-		        strAux[j] = str1[j];
-		    }
-		    }
+        final int SIZE = 6; //const array length
+        strings = new String[SIZE]; 			//initializing array called "strings'
+        Scanner scan0 = new Scanner(System.in); 	//Class Scanner constructor
+
+        //fill the array
+        for (int i = 0; i < SIZE; i++) {
+            strings[i] = scan0.nextLine();
+            //System.out.print(strings[i] + ", ");
         }
-		str1 = strAux;
-		
-		for (int i = 0; i<SIZE; i++) {
-		    System.out.print(str1[i] + ", ");
-			//input a, a, a, s, s, a
-			//result: a, null, null, s, s, a,
-		}
-	}
+        
+	String[] aux = new String[SIZE]; 		//initializing auxilary array
+        int counter = 0; //add new variable
+	
+        for(int i=0; i<SIZE; i++) { 			//each array element
+            for(int j=0; j<SIZE; j++) {			//compare to others	
+                if (strings[j].equals(strings[i])) {	//add +1 to counter for each array element repeat
+                    //System.out.println(strings[j]);
+                    counter++;
+            	}
+            }
+            if (counter > 1) {				//filling aux array with condition
+                aux[i] = null;
+            }
+            else {
+                aux[i] = strings[i];
+            }
+            //System.out.print(counter + ",");
+            counter = 0;				//reset counter to 0 for next (i-th) strings array element
+        }
+        strings = aux;					//set equal initial array to aux
+        for (int i = 0; i<SIZE; i++) {
+            System.out.print(strings[i] + ", ");
+        }
+    }
 }
